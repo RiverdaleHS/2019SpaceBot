@@ -4,10 +4,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class MoOff extends Command {
-  //  isMoOn = false;
     public MoOff() {
         requires(Robot.m_Mo);
-       }
+    }
        
     protected void initalize() {
     
@@ -17,6 +16,6 @@ public class MoOff extends Command {
     }
 
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 }

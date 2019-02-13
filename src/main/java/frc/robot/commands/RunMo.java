@@ -5,9 +5,8 @@ import frc.robot.Robot;
 
 
 public class RunMo extends Command {
-   // isMoOn = true;
     public RunMo() {
-    requires(Robot.m_Mo);
+        requires(Robot.m_Mo);
     }
    
     protected void initalize() {
@@ -18,7 +17,7 @@ public class RunMo extends Command {
     }
 
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 }
 

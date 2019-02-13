@@ -7,7 +7,7 @@ import frc.robot.Robot;
 public class LarryOff extends Command {
     public LarryOff() {
         requires(Robot.m_Larry);
-       }
+    }
        
     protected void initalize() {
     
@@ -18,6 +18,6 @@ public class LarryOff extends Command {
     }
     
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 }
