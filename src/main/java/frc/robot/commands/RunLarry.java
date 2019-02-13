@@ -8,7 +8,7 @@ import frc.robot.Robot;
 public class RunLarry extends Command {
     public RunLarry() {
         requires(Robot.m_Larry);
-        }
+    }
 
     protected void initalize() {
     }
@@ -18,6 +18,6 @@ public class RunLarry extends Command {
     }
     
     protected boolean isFinished() {
-       return false;
+       return true;
     }
 }

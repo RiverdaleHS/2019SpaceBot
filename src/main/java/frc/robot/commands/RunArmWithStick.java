@@ -5,9 +5,9 @@ import frc.robot.Robot;
 
 
 
-public class RunArm extends Command {
+public class RunArmWithStick extends Command {
     // double motorSpeed;
-    public RunArm() {
+    public RunArmWithStick() {
         requires(Robot.m_Arm);
      
     }
@@ -17,20 +17,12 @@ public class RunArm extends Command {
 
     protected void execute() {
         Robot.m_Arm.arm(Robot.m_oi.getLogitech().getRawAxis(1));
-
     }
 
     protected boolean isFinished() {
-        //return the value of the limit switch (or the status that says we want to end it)
-        if (Robot.m_Arm.getHallEffect()){
-             return true;     
-        }
-         else {
-             return false;
-         }
+        return false;
     }
     protected void end() {
        Robot.m_Arm.arm(0);
     }
-//end turn off the motor
 }
