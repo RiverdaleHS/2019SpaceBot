@@ -6,7 +6,7 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
-import frc.robot.commands.RunArm;
+import frc.robot.commands.RunArmWithStick;
 
 public class Arm extends Subsystem {
     TalonSRX armMotor = new TalonSRX(RobotMap.armMotor);
@@ -15,7 +15,7 @@ public class Arm extends Subsystem {
 //   DigitalInput lowerHallEffect = new DigitalInput(5);
     
     public void initDefaultCommand() {
-        setDefaultCommand(new RunArm());
+        setDefaultCommand(new RunArmWithStick());
     }
 //need a function to return the value of the limit switch
     public void arm(double speed) {
