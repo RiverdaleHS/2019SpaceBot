@@ -53,10 +53,6 @@ public class Robot extends TimedRobot {
   public static Intake m_Intake = new Intake();
   public static Arm m_Arm = new Arm();
   public boolean isMoOn = false;
-  DigitalInput topHallEffect = new DigitalInput(4);
-  public boolean getHallEffect(){
-    return topHallEffect.get();
-  }
   Compressor c = new Compressor();
   //UsbCamera usbCamera = new UsbCamera("USB Camera 0", 0);
   //MjpegServer mjpegServer1 = new MjpegServer("serve_USB Camera 0", 1181);
@@ -71,6 +67,7 @@ public class Robot extends TimedRobot {
   Button button10 = new JoystickButton(stick, 10);
   Button button11 = new JoystickButton(stick, 11);
   Button button12 = new JoystickButton(stick, 12);
+  Button button13 = new JoystickButton(stick, 13);
   Button button15 = new JoystickButton(stick, 15);
   Button button14 = new JoystickButton(stick, 14);
   Button trigger = new JoystickButton(stick, 1);
@@ -160,29 +157,23 @@ public class Robot extends TimedRobot {
     double x = stick.getX();
     double twist = stick.getTwist();
     Robot.m_Chassis.setMotors(y - twist - x, y - twist + x, -y + -twist - x, -y + -twist + x);
-    if (getHallEffect()){
-      System.out.println("True");     
-    }
-    else {
-      System.out.println("False");
-    }
-    if (!isMoOn){
+  
+    
     button5.whenPressed(new RunMo());
-    }
-    else {
     button6.whenPressed(new MoOff());
-    }
+    
     button10.whenPressed(new RunLarry());
     button9.whenPressed(new LarryOff());
     button11.whenPressed(new RunConveyor(.8));
     button12.whenPressed(new RunConveyor(0));
-    button14.whenPressed(new RunIntake(.4));
+    button14.whenPressed(new RunIntake(.7));
     button15.whenPressed(new RunIntake(0));
-    // button3.whenPressed(new RunArm(.4));
-    // button4.whenPressed(new RunArm(0));
+    button3.whenPressed(new RunArm(.4));
+    button4.whenPressed(new RunArm(0));
+    button13.whenPressed(new RunArm(-.4));
     trigger.whenPressed(new RunShooter(.8));
     button2.whenPressed(new RunShooter(0));
-
+    
  
     bumperLeft.whenPressed(new RunMo());
     bumperRight.whenPressed(new MoOff());

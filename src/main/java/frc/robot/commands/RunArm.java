@@ -6,9 +6,10 @@ import frc.robot.Robot;
 
 
 public class RunArm extends Command {
-    // double motorSpeed;
-    public RunArm() {
+     double motorSpeed;
+     public RunArm(double speed) {
         requires(Robot.m_Arm);
+        motorSpeed = speed;
      
     }
 
@@ -16,17 +17,17 @@ public class RunArm extends Command {
     }
 
     protected void execute() {
-        Robot.m_Arm.arm(Robot.m_oi.getLogitech().getRawAxis(1));
+        Robot.m_Arm.arm(motorSpeed);
 
     }
 
     protected boolean isFinished() {
         //return the value of the limit switch (or the status that says we want to end it)
         if (Robot.m_Arm.getHallEffect()){
-             return true;     
+            return false;     
         }
          else {
-             return false;
+             return true;
          }
     }
     protected void end() {

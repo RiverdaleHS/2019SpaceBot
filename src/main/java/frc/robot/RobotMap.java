@@ -31,7 +31,7 @@ public class RobotMap {
   public static int rightShooterMotor = 30;
   public static int conveyorMotor = 7;
   public static int intakeMotor = 31;
-  public static int armMotor = 32;
+  public static int armMotor = 0; // 32
   // If you are using multiple modules, make sure to define both the port
   // number and the module. For example you with a rangefinder:
   // public static int rangefinderPort = 1;

@@ -12,6 +12,6 @@ public class Intake extends Subsystem {
     public void initDefaultCommand() {}
 
     public void intake(double speed) {
-        intakeMotor.set(ControlMode.PercentOutput, speed);
+        intakeMotor.set(ControlMode.PercentOutput, -speed);
     }
 }
