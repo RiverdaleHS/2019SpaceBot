@@ -14,10 +14,10 @@ public class Arm extends Subsystem {
     DigitalInput hallEffect = new DigitalInput(4);
     
     public void initDefaultCommand() {
-        setDefaultCommand(new RunArmWithStick());
+      setDefaultCommand(new RunArmWithStick());
     }
 //need a function to return the value of the limit switch
-    public void arm(double speed) {
+    public void setArm(double speed) {
        armMotor.set(ControlMode.PercentOutput, speed);
     }
     public boolean getHallEffect(){

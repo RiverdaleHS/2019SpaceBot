@@ -37,6 +37,7 @@ public class OI {
   Button button10 = new JoystickButton(stick, 10);
   Button button11 = new JoystickButton(stick, 11);
   Button button12 = new JoystickButton(stick, 12);
+  Button button13 = new JoystickButton(stick, 13);
   Button button15 = new JoystickButton(stick, 15);
   Button button14 = new JoystickButton(stick, 14);
   Button trigger = new JoystickButton(stick, 1);
@@ -61,6 +62,9 @@ public class OI {
       button9.whenPressed(new LarryOff());
       button11.whenPressed(new RunConveyor(.8));
       button12.whenPressed(new RunConveyor(0));
+      // button3.whenPressed(new RunArmWithStick(.4)); THIS doesnt make any sense
+      // button4.whenPressed(new RunArmWithStick(0));
+      // button13.whenPressed(new RunArmWithStick(-.4));
       button14.whenPressed(new RunIntake(.4));
       button15.whenPressed(new RunIntake(0));
       trigger.whenPressed(new RunShooter(.8));
