@@ -7,12 +7,34 @@
 
 package frc.robot;
 
+import edu.wpi.cscore.MjpegServer;
+//import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+//import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+//import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc.robot.commands.RunMo;
+import frc.robot.commands.RunLarry;
+import frc.robot.commands.RunConveyor;
+import frc.robot.commands.MoOff;
+import frc.robot.commands.RunShooter;
+import frc.robot.commands.RunIntake;
+import frc.robot.commands.RunArm;
+import frc.robot.commands.LarryOff;
 import frc.robot.subsystems.Chassis;
+import frc.robot.subsystems.Shooter;
+import frc.robot.subsystems.Conveyor;
+import frc.robot.subsystems.Larry;
+import frc.robot.subsystems.Mo;
+import frc.robot.subsystems.Arm;
+import frc.robot.subsystems.Intake;
+//import edu.wpi.first.wpilibj.CameraServer;
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -22,16 +44,56 @@ import frc.robot.subsystems.Chassis;
  * project.
  */
 public class Robot extends TimedRobot {
+  public static Mo m_Mo = new Mo();
+  public static Larry m_Larry = new Larry();
   public static Chassis m_Chassis = new Chassis();
   public static OI m_oi = new OI();
+  public static Shooter m_Shooter = new Shooter();
+  public static Conveyor m_Conveyor = new Conveyor();
+  public static Intake m_Intake = new Intake();
+  public static Arm m_Arm = new Arm();
+  public boolean isMoOn = false;
+  DigitalInput topHallEffect = new DigitalInput(4);
+  public boolean getHallEffect(){
+    return topHallEffect.get();
+  }
+  Compressor c = new Compressor();
+  //UsbCamera usbCamera = new UsbCamera("USB Camera 0", 0);
+  //MjpegServer mjpegServer1 = new MjpegServer("serve_USB Camera 0", 1181);
 
+  Joystick stick = m_oi.getStick();
+  Button button2 = new JoystickButton(stick, 2);
+  Button button3 = new JoystickButton(stick, 3);
+  Button button4 = new JoystickButton(stick, 4);
+  Button button5 = new JoystickButton(stick, 5);
+  Button button6 = new JoystickButton(stick, 6);
+  Button button9 = new JoystickButton(stick, 9);
+  Button button10 = new JoystickButton(stick, 10);
+  Button button11 = new JoystickButton(stick, 11);
+  Button button12 = new JoystickButton(stick, 12);
+  Button button15 = new JoystickButton(stick, 15);
+  Button button14 = new JoystickButton(stick, 14);
+  Button trigger = new JoystickButton(stick, 1);
+
+  Joystick logitech = m_oi.getLogitech();
+  Button buttonX = new JoystickButton(logitech, 1);
+  Button buttonA = new JoystickButton(logitech, 2);
+  Button buttonB = new JoystickButton(logitech, 3);
+  Button buttonY = new JoystickButton(logitech, 4);
+  Button bumperLeft = new JoystickButton(logitech, 5);
+  Button bumperRight = new JoystickButton(logitech, 6);
+  Button triggerleft = new JoystickButton(logitech, 7);
+  Button triggerRight = new JoystickButton(logitech, 8);
+  Button back = new JoystickButton(logitech, 9);
+  Button start = new JoystickButton(logitech, 10);
+  
   /**
    * This function is run when the robot is first started up and should be
    * used for any initialization code.
    */
   @Override
   public void robotInit() {
-
+   // CameraServer.getInstance().startAutomaticCapture();
   }
 
   /**
@@ -81,6 +143,7 @@ public class Robot extends TimedRobot {
   @Override
   public void autonomousPeriodic() {
     Scheduler.getInstance().run();
+    m_Chassis.setMotors( .3, 0, .3, 0);
   }
 
   @Override
@@ -92,14 +155,55 @@ public class Robot extends TimedRobot {
     // if (m_autonomousCommand != null) {
     //   m_autonomousCommand.cancel();
     // }
+    c.setClosedLoopControl(true);
+    double y = stick.getY();
+    double x = stick.getX();
+    double twist = stick.getTwist();
+    Robot.m_Chassis.setMotors(y - twist - x, y - twist + x, -y + -twist - x, -y + -twist + x);
+    if (getHallEffect()){
+      System.out.println("True");     
+    }
+    else {
+      System.out.println("False");
+    }
+    if (!isMoOn){
+    button5.whenPressed(new RunMo());
+    }
+    else {
+    button6.whenPressed(new MoOff());
+    }
+    button10.whenPressed(new RunLarry());
+    button9.whenPressed(new LarryOff());
+    button11.whenPressed(new RunConveyor(.8));
+    button12.whenPressed(new RunConveyor(0));
+    button14.whenPressed(new RunIntake(.4));
+    button15.whenPressed(new RunIntake(0));
+    // button3.whenPressed(new RunArm(.4));
+    // button4.whenPressed(new RunArm(0));
+    trigger.whenPressed(new RunShooter(.8));
+    button2.whenPressed(new RunShooter(0));
+
+ 
+    bumperLeft.whenPressed(new RunMo());
+    bumperRight.whenPressed(new MoOff());
+    triggerleft.whenPressed(new RunLarry());
+    triggerRight.whenPressed(new LarryOff());
+    buttonX.whenPressed(new RunConveyor(.8));
+    buttonY.whenPressed(new RunConveyor(0));
+    back.whenPressed(new RunIntake(.4));
+    start.whenPressed(new RunIntake(0));
+    buttonA.whenPressed(new RunShooter(.8));
+    buttonB.whenPressed(new RunShooter(0));
   }
 
   /**
    * This function is called periodically during operator control.
    */
+  
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
+    
   }
 
   /**

@@ -5,16 +5,23 @@
 /* the project.                                                               */
 /*----------------------------------------------------------------------------*/
 
+
 package frc.robot.commands;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
+import frc.robot.OI;
+
 
 public class JoystickDrive extends Command {
+
+  public static OI m_oi = new OI();
+  Joystick stick = m_oi.getStick();
   
   public JoystickDrive() {
-    // Use requires() here to declare subsystem dependencies
-    // eg. requires(chassis);
+    //Use requires() here to declare subsystem dependencies
+    //eg. requires(chassis);
     requires(Robot.m_Chassis);
   }
 
@@ -26,9 +33,9 @@ public class JoystickDrive extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    double virtical = -Robot.m_oi.stick.getY();
-    double horizontal = -Robot.m_oi.stick.getX();
-    double twist = -Robot.m_oi.stick.getTwist();
+    double virtical = -stick.getY();
+    double horizontal = -stick.getX();
+    double twist = -stick.getTwist();
     //if this works the first time lol
     Robot.m_Chassis.setMotors(virtical - twist - horizontal, virtical - twist + horizontal, -virtical + -twist - horizontal, -virtical + -twist + horizontal);
   }

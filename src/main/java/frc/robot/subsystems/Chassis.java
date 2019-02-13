@@ -13,6 +13,8 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.commands.JoystickDrive;
+import edu.wpi.first.wpilibj.Ultrasonic;
+
 
 /**
  * An example subsystem.  You can replace me with your own Subsystem.
@@ -23,18 +25,24 @@ public class Chassis extends Subsystem {
   TalonSRX leftFrontMotor = new TalonSRX(RobotMap.leftFrontMotor);
   TalonSRX leftRearMotor = new TalonSRX(RobotMap.leftRearMotor);
   TalonSRX rightFrontMotor = new TalonSRX(RobotMap.rightFrontMotor);
-  TalonSRX rightReartMotor = new TalonSRX(RobotMap.rightRearMotor);
+  TalonSRX rightRearMotor = new TalonSRX(RobotMap.rightRearMotor);
 
+  Ultrasonic ultra = new Ultrasonic(1,2);
+
+  public double distance = ultrasonic();
+
+  public double ultrasonic() {
+    double range = ultra.getRangeInches(); 
+    return range;  
+  } 
   
-  public Chassis(){
-
-  }
+  
 
   public void setMotors(double leftFront, double leftRear, double rightFront, double rightRear){
     leftFrontMotor.set(ControlMode.PercentOutput, leftFront);
     leftRearMotor.set(ControlMode.PercentOutput, leftRear);
     rightFrontMotor.set(ControlMode.PercentOutput, rightFront);
-    rightReartMotor.set(ControlMode.PercentOutput, rightRear);
+    rightRearMotor.set(ControlMode.PercentOutput, rightRear);
   }
 
   @Override
@@ -46,4 +54,9 @@ public class Chassis extends Subsystem {
   public void updateTelemetry(){
 
   }
+
+
+public void chassis(double leftFrontMotorSpeed) {
+}
+  
 }
