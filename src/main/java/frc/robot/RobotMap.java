@@ -27,9 +27,9 @@ public class RobotMap {
   public static int leftRearMotor = 20;
   public static int rightFrontMotor = 22;
   public static int rightRearMotor = 40;
-  public static int leftShooterMotor = 21;
+  public static int leftShooterMotor = 7;
   public static int rightShooterMotor = 30;
-  public static int conveyorMotor = 7;
+  public static int conveyorMotor = 21;
   public static int intakeMotor = 31;
   public static int armMotor = 32;
   // If you are using multiple modules, make sure to define both the port

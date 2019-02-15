@@ -33,6 +33,7 @@ public class OI {
   Button button4 = new JoystickButton(stick, 4);
   Button button5 = new JoystickButton(stick, 5);
   Button button6 = new JoystickButton(stick, 6);
+  Button button7 = new JoystickButton(stick, 7);
   Button button9 = new JoystickButton(stick, 9);
   Button button10 = new JoystickButton(stick, 10);
   Button button11 = new JoystickButton(stick, 11);
@@ -56,10 +57,15 @@ public class OI {
 
 
   public OI(){
-      button5.whenPressed(new RunMo());
-      button6.whenPressed(new MoOff());
-      button10.whenPressed(new RunLarry());
-      button9.whenPressed(new LarryOff());
+    button6.whenPressed(new MoOff());//
+    //button4.whenPressed(new RunMo());
+    button7.whenPressed(new LarryOff()); //correct
+    //button5.whenPressed(new RunLarry());
+
+      // button5.whenPressed(new RunMo());
+      // button6.whenPressed(new MoOff());
+      // button10.whenPressed(new RunLarry());
+      // button9.whenPressed(new LarryOff());
       button11.whenPressed(new RunConveyor(.8));
       button12.whenPressed(new RunConveyor(0));
       // button3.whenPressed(new RunArmWithStick(.4)); THIS doesnt make any sense
@@ -72,8 +78,8 @@ public class OI {
   
    
       bumperLeft.whenPressed(new RunMo());
-      bumperRight.whenPressed(new MoOff());
-      triggerleft.whenPressed(new RunLarry());
+      bumperRight.whenPressed(new RunLarry());
+      triggerleft.whenPressed(new MoOff());
       triggerRight.whenPressed(new LarryOff());
       buttonX.whenPressed(new RunConveyor(.8));
       buttonY.whenPressed(new RunConveyor(0));

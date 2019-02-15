@@ -12,11 +12,13 @@ public class Shooter extends Subsystem {
     TalonSRX rightMotor = new TalonSRX(RobotMap.rightShooterMotor);
 
     public void initDefaultCommand() {
+        leftMotor.setInverted(true);
+        rightMotor.setInverted(false);
     }
 
     public void shooter(double speed) {
         leftMotor.set(ControlMode.PercentOutput, speed);
-        rightMotor.set(ControlMode.PercentOutput, -speed);
+        rightMotor.set(ControlMode.PercentOutput, speed);
     }
 
 }
