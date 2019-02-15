@@ -25,7 +25,7 @@ public class StopIntake extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.m_Intake.intake(0);
+    Robot.m_Intake.setSpeed(0);
   }
 
   // Make this return true when this Command no longer needs to run execute()
