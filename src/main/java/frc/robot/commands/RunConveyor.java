@@ -13,10 +13,19 @@ public class RunConveyor extends Command {
     protected void initialize() {
     }
 
+    @Override
+    public synchronized void start() {
+        Robot.m_Conveyor.conveyor(motorSpeed);
+    }
     protected void execute() {
         Robot.m_Conveyor.conveyor(motorSpeed);
     }
+    @Override
+    public synchronized void cancel() {
+        Robot.m_Conveyor.conveyor(0);
+    }
 
+    
     @Override
     protected void end() {
         Robot.m_Conveyor.conveyor(0);

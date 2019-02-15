@@ -12,7 +12,13 @@ public class Intake extends Subsystem {
 
     public void initDefaultCommand() {}
 
-    public void intake(double speed) {
+    public Intake(){
+        intakeMotor.setInverted(true);
+
+    }
+
+
+    public void setSpeed(double speed) {
         intakeMotor.set(ControlMode.PercentOutput, speed);
     }
 }

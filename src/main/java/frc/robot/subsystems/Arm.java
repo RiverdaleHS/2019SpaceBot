@@ -11,7 +11,8 @@ import frc.robot.commands.RunArmWithStick;
 public class Arm extends Subsystem {
     TalonSRX armMotor = new TalonSRX(RobotMap.armMotor);
    
-    DigitalInput hallEffect = new DigitalInput(4);
+    DigitalInput upperHallEffect = new DigitalInput(7);
+    DigitalInput lowerHallEffect = new DigitalInput(8);
     
     public void initDefaultCommand() {
       setDefaultCommand(new RunArmWithStick());
@@ -20,7 +21,10 @@ public class Arm extends Subsystem {
     public void setArm(double speed) {
        armMotor.set(ControlMode.PercentOutput, speed);
     }
-    public boolean getHallEffect(){
-        return hallEffect.get();
+    public boolean getUpperHallEffect(){
+        return upperHallEffect.get();
    }
+   public boolean getLowerHallEffect(){
+    return lowerHallEffect.get();
+  }
 }

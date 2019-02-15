@@ -78,8 +78,8 @@ public class OI {
       // button6.whenPressed(new MoOff());
       button7.whenPressed(new LarryOff()); //correct
       // button9.whenPressed(new LarryOff());
-      // button10.whenPressed(new RunLarry());
-      button11.whenPressed(new RunConveyor(.8));
+      button10.whenPressed(new RunConveyor(.8));
+      //button11.whenPressed(new RunConveyor(.8));
       button12.whenPressed(new RunConveyor(0));
       // button13.whenPressed(new RunArmWithStick(-.4));
       button14.whenPressed(new RunIntake(.4));

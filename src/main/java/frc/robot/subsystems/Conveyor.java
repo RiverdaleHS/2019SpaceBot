@@ -1,6 +1,7 @@
 package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
+import com.ctre.phoenix.motorcontrol.NeutralMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -18,5 +19,6 @@ public class Conveyor extends Subsystem {
     }
     public void conveyor(double speed) {
         Motor.set(ControlMode.PercentOutput, -speed);
+        Motor.setNeutralMode(NeutralMode.Brake);
     }
 }
