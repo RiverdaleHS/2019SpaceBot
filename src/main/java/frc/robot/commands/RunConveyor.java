@@ -17,8 +17,13 @@ public class RunConveyor extends Command {
         Robot.m_Conveyor.conveyor(motorSpeed);
     }
 
+    @Override
+    protected void end() {
+        Robot.m_Conveyor.conveyor(0);
+    }
+
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
 }

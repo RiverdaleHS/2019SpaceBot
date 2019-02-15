@@ -10,10 +10,13 @@ package frc.robot;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc.robot.commands.FireCargoRocket;
+import frc.robot.commands.FireCargoShip;
 import frc.robot.commands.LarryOff;
 import frc.robot.commands.MoOff;
 import frc.robot.commands.RunArmWithStick;
 import frc.robot.commands.RunConveyor;
+import frc.robot.commands.RunConveyorUntilSeesCargo;
 import frc.robot.commands.RunIntake;
 import frc.robot.commands.RunLarry;
 import frc.robot.commands.RunMo;
@@ -28,6 +31,7 @@ public class OI {
   private Joystick stick = new Joystick(RobotMap.mainJoystick);
   private Joystick logitech = new Joystick(RobotMap.logitech);
 
+  Button button1 = new JoystickButton(stick, 1);
   Button button2 = new JoystickButton(stick, 2);
   Button button3 = new JoystickButton(stick, 3);
   Button button4 = new JoystickButton(stick, 4);
@@ -57,26 +61,31 @@ public class OI {
 
 
   public OI(){
-    button6.whenPressed(new MoOff());//
-    //button4.whenPressed(new RunMo());
-    button7.whenPressed(new LarryOff()); //correct
-    //button5.whenPressed(new RunLarry());
-
+      trigger.whenPressed(new RunShooter(.8));
+      // button1.whileHeld(new FireCargoShip());
+      button1.whileHeld(new RunConveyor(0.8));
+      button1.whileHeld(new RunShooter(0.8));
+      // button2.whileHeld(new FireCargoRocket());
+      button2.whileHeld(new RunConveyor(0.8));
+      button2.whileHeld(new RunShooter(0.4));
+      button3.whenPressed(new RunShooter(0));
+      // button3.whenPressed(new RunArmWithStick(.4)); THIS doesnt make any sense
+      button4.whenPressed(new RunConveyorUntilSeesCargo());
+      button6.whenPressed(new MoOff());//
+      // button4.whenPressed(new RunMo());
+      // button5.whenPressed(new RunLarry());
       // button5.whenPressed(new RunMo());
       // button6.whenPressed(new MoOff());
-      // button10.whenPressed(new RunLarry());
+      button7.whenPressed(new LarryOff()); //correct
       // button9.whenPressed(new LarryOff());
+      // button10.whenPressed(new RunLarry());
       button11.whenPressed(new RunConveyor(.8));
       button12.whenPressed(new RunConveyor(0));
-      // button3.whenPressed(new RunArmWithStick(.4)); THIS doesnt make any sense
-      // button4.whenPressed(new RunArmWithStick(0));
       // button13.whenPressed(new RunArmWithStick(-.4));
       button14.whenPressed(new RunIntake(.4));
       button15.whenPressed(new RunIntake(0));
-      trigger.whenPressed(new RunShooter(.8));
-      button2.whenPressed(new RunShooter(0));
+      
   
-   
       bumperLeft.whenPressed(new RunMo());
       bumperRight.whenPressed(new RunLarry());
       triggerleft.whenPressed(new MoOff());
