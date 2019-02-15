@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc.robot.subsystems.Chassis;
 import frc.robot.subsystems.Shooter;
 import frc.robot.subsystems.Conveyor;
@@ -44,6 +45,8 @@ public class Robot extends TimedRobot {
   @Override
   public void robotInit() {
    CameraServer.getInstance().startAutomaticCapture();
+   SmartDashboard.putData(m_Intake);
+   SmartDashboard.putData(m_Conveyor);
   }
 
   /**
@@ -106,7 +109,7 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-    
+    //SmartDashboard.putBoolean("Detected Target Color", m_Intake.getColorSensor());
   }
 
   /**

@@ -12,11 +12,26 @@ public class RunShooter extends Command {
     protected void initialize() {
     }
 
+    @Override
+    public synchronized void start() {
+        Robot.m_Shooter.shooter(motorSpeed);
+    }
+
+    //does this need to be done in start?
     protected void execute() {
         Robot.m_Shooter.shooter(motorSpeed);
     }
 
+    @Override
+    public synchronized void cancel() {
+        Robot.m_Shooter.shooter(0);
+    }
+    @Override
+    protected void end() {
+        Robot.m_Shooter.shooter(0);
+    }
+
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 }

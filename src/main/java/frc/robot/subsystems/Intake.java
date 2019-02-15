@@ -3,6 +3,7 @@ package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 
@@ -11,7 +12,13 @@ public class Intake extends Subsystem {
 
     public void initDefaultCommand() {}
 
-    public void intake(double speed) {
+    public Intake(){
+        intakeMotor.setInverted(true);
+
+    }
+
+
+    public void setSpeed(double speed) {
         intakeMotor.set(ControlMode.PercentOutput, speed);
     }
 }

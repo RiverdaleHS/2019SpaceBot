@@ -10,11 +10,11 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
-public class RaiseArm extends Command {
-  public RaiseArm() {
+public class StopIntake extends Command {
+  public StopIntake() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
-    requires(Robot.m_Arm);
+    requires(Robot.m_Intake);
   }
 
   // Called just before this Command runs the first time
@@ -25,24 +25,18 @@ public class RaiseArm extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.m_Arm.setArm(.2);
+    Robot.m_Intake.setSpeed(0);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if (Robot.m_Arm.getUpperHallEffect()|| Robot.m_oi.getStick().getRawButton(11) ) {
-      return true;
-    }
-    else {
-      return false;
-    }
-  }  
+    return true;
+  }
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
-    Robot.m_Arm.setArm(0);
   }
 
   // Called when another command which requires one or more of the same

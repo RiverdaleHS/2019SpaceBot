@@ -14,11 +14,11 @@ public class RunIntake extends Command {
     }
 
     protected void execute() {
-        Robot.m_Intake.intake(motorSpeed);
+        Robot.m_Intake.setSpeed(motorSpeed);
     }
 
     protected boolean isFinished() {
-        return false;
+        return true;
     }
 
 }
