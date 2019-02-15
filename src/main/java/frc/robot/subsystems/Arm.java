@@ -9,18 +9,22 @@ import frc.robot.RobotMap;
 import frc.robot.commands.RunArmWithStick;
 
 public class Arm extends Subsystem {
-    TalonSRX armMotor = new TalonSRX(RobotMap.armMotor);
-   
-    DigitalInput hallEffect = new DigitalInput(4);
+
+  //sensors
+  DigitalInput hallEffect = new DigitalInput(4);
+
+  //motor controllers
+  TalonSRX armMotor = new TalonSRX(RobotMap.armMotor);
     
-    public void initDefaultCommand() {
-      setDefaultCommand(new RunArmWithStick());
-    }
-//need a function to return the value of the limit switch
-    public void setArm(double speed) {
-       armMotor.set(ControlMode.PercentOutput, speed);
-    }
-    public boolean getHallEffect(){
-        return hallEffect.get();
-   }
+  public void initDefaultCommand() {
+    setDefaultCommand(new RunArmWithStick());
+  }
+
+  public void setSpeed(double speed) {
+      armMotor.set(ControlMode.PercentOutput, speed);
+  }
+  
+  public boolean getHallEffect(){
+      return hallEffect.get();
+  }
 }
