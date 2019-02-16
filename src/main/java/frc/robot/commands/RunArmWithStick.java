@@ -15,7 +15,7 @@ public class RunArmWithStick extends Command {
     }
 
     protected void execute() {
-        Robot.m_Arm.setArm(Robot.m_oi.getLogitech().getRawAxis(1));
+        Robot.m_Arm.setSpeed(Robot.m_oi.getLogitech().getRawAxis(1));
     }
 
     protected boolean isFinished() {
@@ -31,6 +31,6 @@ public class RunArmWithStick extends Command {
     }
     
     protected void end() {
-       Robot.m_Arm.setArm(0);
+       Robot.m_Arm.setSpeed(0);
     }
 }

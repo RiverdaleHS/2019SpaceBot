@@ -100,6 +100,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
+
   }
 
   /**
@@ -109,7 +110,10 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-    //SmartDashboard.putBoolean("Detected Target Color", m_Intake.getColorSensor());
+    //Universal cancle buttons
+    if (m_oi.getLogitech().getRawButton(1) || m_oi.getLogitech().getRawButton(11)){ //this has not been tested
+      Scheduler.getInstance().removeAll();
+    }
   }
 
   /**

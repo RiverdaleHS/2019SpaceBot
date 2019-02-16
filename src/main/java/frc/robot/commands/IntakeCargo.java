@@ -30,9 +30,9 @@ public class IntakeCargo extends CommandGroup {
     // e.g. if Command1 requires chassis, and Command2 requires arm,
     // a CommandGroup containing them would require both the chassis and the
     // arm.
-      addSequential(new RunConveyorUntilSeesCargo()); //I THINK the first command may be given finnished priority
-      addParallel(new RunIntake(.4));
-      addSequential(new RunIntake(0));
-      addSequential(new RunConveyor(0));
+    addParallel(new RunIntake(.4));
+    addSequential(new RunConveyorUntilSeesCargo());
+    addSequential(new RunIntake(0));
+      // addSequential(new RunConveyor(0));
   }
 }

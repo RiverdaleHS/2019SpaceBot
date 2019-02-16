@@ -7,15 +7,15 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 
 public class Intake extends Subsystem {
+    
+    //motors
     TalonSRX intakeMotor = new TalonSRX(RobotMap.intakeMotor);
 
     public void initDefaultCommand() {}
 
     public Intake(){
         intakeMotor.setInverted(true);
-
     }
-
 
     public void setSpeed(double speed) {
         intakeMotor.set(ControlMode.PercentOutput, speed);
