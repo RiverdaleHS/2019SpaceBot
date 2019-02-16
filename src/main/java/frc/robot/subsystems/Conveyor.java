@@ -14,13 +14,13 @@ public class Conveyor extends Subsystem {
     DigitalInput colorSensor = new DigitalInput(9);
 
     //motors
-    TalonSRX Motor = new TalonSRX(RobotMap.conveyorMotor);
+    TalonSRX motor = new TalonSRX(RobotMap.conveyorMotor);
     
     public void initDefaultCommand() {}
 
     public void conveyor(double speed) {
-        Motor.set(ControlMode.PercentOutput, -speed);
-        Motor.setNeutralMode(NeutralMode.Brake);
+        motor.set(ControlMode.PercentOutput, -speed);
+        motor.setNeutralMode(NeutralMode.Brake);
     }
 
     public boolean getColorSensor() {

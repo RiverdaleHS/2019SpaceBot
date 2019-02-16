@@ -56,7 +56,7 @@ public class OI {
   Button buttonY = new JoystickButton(logitech, 4);
   Button bumperLeft = new JoystickButton(logitech, 5);
   Button bumperRight = new JoystickButton(logitech, 6);
-  Button triggerleft = new JoystickButton(logitech, 7);
+  Button triggerLeft = new JoystickButton(logitech, 7);
   Button triggerRight = new JoystickButton(logitech, 8);
   Button back = new JoystickButton(logitech, 9);
   Button start = new JoystickButton(logitech, 10);
@@ -93,7 +93,7 @@ public class OI {
   
       bumperLeft.whenPressed(new RunMo());
       bumperRight.whenPressed(new RunLarry());
-      triggerleft.whenPressed(new MoOff());
+      triggerLeft.whenPressed(new MoOff());
       triggerRight.whenPressed(new LarryOff());
       // buttonX.whenPressed(new RunConveyor(.8));
       buttonY.whenPressed(new RaiseArm());

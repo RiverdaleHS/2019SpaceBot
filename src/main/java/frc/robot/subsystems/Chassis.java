@@ -13,8 +13,6 @@ import com.ctre.phoenix.motorcontrol.can.TalonSRX;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 import frc.robot.commands.JoystickDrive;
-import edu.wpi.first.wpilibj.Ultrasonic;
-
 
 /**
  * An example subsystem.  You can replace me with your own Subsystem.
