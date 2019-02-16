@@ -13,9 +13,20 @@ public class RunIntake extends Command {
     protected void initialize() {
     }
 
+    @Override
+    public synchronized void start() {
+        Robot.m_Intake.setSpeed(motorSpeed);
+
+    }
+
     protected void execute() {
         Robot.m_Intake.setSpeed(motorSpeed);
     }
+
+    // @Override
+    // protected void end() {
+    //     Robot.m_Intake.setSpeed(0);
+    // }
 
     protected boolean isFinished() {
         return true;

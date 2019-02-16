@@ -12,8 +12,11 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc.robot.commands.FireCargoRocket;
 import frc.robot.commands.FireCargoShip;
+import frc.robot.commands.IntakeCargo;
 import frc.robot.commands.LarryOff;
+import frc.robot.commands.LowerArm;
 import frc.robot.commands.MoOff;
+import frc.robot.commands.RaiseArm;
 import frc.robot.commands.RunArmWithStick;
 import frc.robot.commands.RunConveyor;
 import frc.robot.commands.RunConveyorUntilSeesCargo;
@@ -65,9 +68,11 @@ public class OI {
       // button1.whileHeld(new FireCargoShip());
       button1.whileHeld(new RunConveyor(0.8));
       button1.whileHeld(new RunShooter(0.8));
+      button1.whileHeld(new MoOff());
       // button2.whileHeld(new FireCargoRocket());
       button2.whileHeld(new RunConveyor(0.8));
       button2.whileHeld(new RunShooter(0.4));
+      button2.whileHeld(new MoOff());
       button3.whenPressed(new RunShooter(0));
       // button3.whenPressed(new RunArmWithStick(.4)); THIS doesnt make any sense
       button4.whenPressed(new RunConveyorUntilSeesCargo());
@@ -81,7 +86,7 @@ public class OI {
       button10.whenPressed(new RunConveyor(.8));
       //button11.whenPressed(new RunConveyor(.8));
       button12.whenPressed(new RunConveyor(0));
-      // button13.whenPressed(new RunArmWithStick(-.4));
+      button13.whenPressed(new IntakeCargo());
       button14.whenPressed(new RunIntake(.4));
       button15.whenPressed(new RunIntake(0));
       
@@ -90,12 +95,13 @@ public class OI {
       bumperRight.whenPressed(new RunLarry());
       triggerleft.whenPressed(new MoOff());
       triggerRight.whenPressed(new LarryOff());
-      buttonX.whenPressed(new RunConveyor(.8));
-      buttonY.whenPressed(new RunConveyor(0));
+      // buttonX.whenPressed(new RunConveyor(.8));
+      buttonY.whenPressed(new RaiseArm());
       back.whenPressed(new RunIntake(.4));
       start.whenPressed(new RunIntake(0));
-      buttonA.whenPressed(new RunShooter(.8));
+      buttonA.whenPressed(new LowerArm());
       buttonB.whenPressed(new RunShooter(0));
+      
   }
 
   public Joystick getStick() {

@@ -111,7 +111,7 @@ public class Robot extends TimedRobot {
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
     //Universal cancle buttons
-    if (m_oi.getLogitech().getRawButton(0) || m_oi.getLogitech().getRawButton(11)){ //this has not been tested
+    if (m_oi.getLogitech().getRawButton(1) || m_oi.getLogitech().getRawButton(11)){ //this has not been tested
       Scheduler.getInstance().removeAll();
     }
   }
