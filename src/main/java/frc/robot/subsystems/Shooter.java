@@ -16,7 +16,7 @@ public class Shooter extends Subsystem {
         rightMotor.setInverted(false);
     }
 
-    public void shooter(double speed) {
+    public void setSpeed(double speed) {
         leftMotor.set(ControlMode.PercentOutput, speed);
         rightMotor.set(ControlMode.PercentOutput, speed);
     }

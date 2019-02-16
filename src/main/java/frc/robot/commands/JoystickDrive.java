@@ -37,7 +37,7 @@ public class JoystickDrive extends Command {
     double horizontal = -stick.getX();
     double twist = -stick.getTwist();
     //if this works the first time lol
-    Robot.m_Chassis.setMotors(virtical - twist - horizontal, virtical - twist + horizontal, -virtical + -twist - horizontal, -virtical + -twist + horizontal);
+    Robot.m_Chassis.setSpeed(virtical - twist - horizontal, virtical - twist + horizontal, -virtical + -twist - horizontal, -virtical + -twist + horizontal);
   }
 
   // Make this return true when this Command no longer needs to run execute()

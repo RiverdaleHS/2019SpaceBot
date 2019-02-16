@@ -9,16 +9,21 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import frc.robot.RobotMap;
 
 public class Conveyor extends Subsystem {
-    TalonSRX Motor = new TalonSRX(RobotMap.conveyorMotor);
+
+    //sensors
     DigitalInput colorSensor = new DigitalInput(9);
 
-    public void initDefaultCommand() {}
+    //motors
+    TalonSRX Motor = new TalonSRX(RobotMap.conveyorMotor);
     
-    public boolean getColorSensor() {
-        return colorSensor.get();
-    }
+    public void initDefaultCommand() {}
+
     public void conveyor(double speed) {
         Motor.set(ControlMode.PercentOutput, -speed);
         Motor.setNeutralMode(NeutralMode.Brake);
+    }
+
+    public boolean getColorSensor() {
+        return colorSensor.get();
     }
 }

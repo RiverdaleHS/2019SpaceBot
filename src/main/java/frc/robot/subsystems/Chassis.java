@@ -20,25 +20,13 @@ import edu.wpi.first.wpilibj.Ultrasonic;
  * An example subsystem.  You can replace me with your own Subsystem.
  */
 public class Chassis extends Subsystem {
-  // Put methods for controlling this subsystem
-  // here. Call these from Commands.
+  //motors
   TalonSRX leftFrontMotor = new TalonSRX(RobotMap.leftFrontMotor);
   TalonSRX leftRearMotor = new TalonSRX(RobotMap.leftRearMotor);
   TalonSRX rightFrontMotor = new TalonSRX(RobotMap.rightFrontMotor);
   TalonSRX rightRearMotor = new TalonSRX(RobotMap.rightRearMotor);
 
-  Ultrasonic ultra = new Ultrasonic(1,2);
-
-  public double distance = ultrasonic();
-
-  public double ultrasonic() {
-    double range = ultra.getRangeInches(); 
-    return range;  
-  } 
-  
-  
-
-  public void setMotors(double leftFront, double leftRear, double rightFront, double rightRear){
+  public void setSpeed(double leftFront, double leftRear, double rightFront, double rightRear){
     leftFrontMotor.set(ControlMode.PercentOutput, leftFront);
     leftRearMotor.set(ControlMode.PercentOutput, leftRear);
     rightFrontMotor.set(ControlMode.PercentOutput, rightFront);
@@ -47,16 +35,7 @@ public class Chassis extends Subsystem {
 
   @Override
   public void initDefaultCommand() {
-    // Set the default command for a subsystem here.
     setDefaultCommand(new JoystickDrive());
   }
 
-  public void updateTelemetry(){
-
-  }
-
-
-public void chassis(double leftFrontMotorSpeed) {
-}
-  
 }
