@@ -31,10 +31,9 @@ public class LowerArm extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if (!Robot.m_Arm.getLowerHallEffect() || Robot.m_oi.getStick().getRawButton(11)) {
+    if (Robot.m_oi.getStick().getRawButton(11) || Robot.m_oi.getLogitech().getRawButton(1) || Robot.m_Arm.getLowerHallEffect()){
       return true;
-    }
-    else {
+    }else{
       return false;
     }
   }  

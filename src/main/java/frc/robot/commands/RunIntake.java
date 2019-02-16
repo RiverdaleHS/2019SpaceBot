@@ -28,6 +28,11 @@ public class RunIntake extends Command {
     //     Robot.m_Intake.setSpeed(0);
     // }
 
+    @Override
+    public synchronized void cancel() {
+        Robot.m_Intake.setSpeed(0);
+    }
+
     protected boolean isFinished() {
         return true;
     }

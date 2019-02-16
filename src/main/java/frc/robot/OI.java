@@ -15,8 +15,10 @@ import frc.robot.commands.FireCargoShip;
 import frc.robot.commands.IntakeCargo;
 import frc.robot.commands.LarryOff;
 import frc.robot.commands.LowerArm;
+import frc.robot.commands.LowerArmTwo;
 import frc.robot.commands.MoOff;
 import frc.robot.commands.RaiseArm;
+import frc.robot.commands.RaiseArmTwo;
 import frc.robot.commands.RunArmWithStick;
 import frc.robot.commands.RunConveyor;
 import frc.robot.commands.RunConveyorUntilSeesCargo;
@@ -24,6 +26,7 @@ import frc.robot.commands.RunIntake;
 import frc.robot.commands.RunLarry;
 import frc.robot.commands.RunMo;
 import frc.robot.commands.RunShooter;
+import frc.robot.commands.TestArmCommand;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -48,7 +51,6 @@ public class OI {
   Button button13 = new JoystickButton(stick, 13);
   Button button15 = new JoystickButton(stick, 15);
   Button button14 = new JoystickButton(stick, 14);
-  Button trigger = new JoystickButton(stick, 1);
 
   Button buttonX = new JoystickButton(logitech, 1);
   Button buttonA = new JoystickButton(logitech, 2);
@@ -64,43 +66,35 @@ public class OI {
 
 
   public OI(){
-      trigger.whenPressed(new RunShooter(.8));
-      // button1.whileHeld(new FireCargoShip());
+      //shoot high
       button1.whileHeld(new RunConveyor(0.8));
       button1.whileHeld(new RunShooter(0.8));
-      button1.whileHeld(new MoOff());
-      // button2.whileHeld(new FireCargoRocket());
+      button1.whenPressed(new LarryOff());
+      //shoot low
       button2.whileHeld(new RunConveyor(0.8));
-      button2.whileHeld(new RunShooter(0.4));
-      button2.whileHeld(new MoOff());
-      button3.whenPressed(new RunShooter(0));
-      // button3.whenPressed(new RunArmWithStick(.4)); THIS doesnt make any sense
-      button4.whenPressed(new RunConveyorUntilSeesCargo());
-      button6.whenPressed(new MoOff());//
-      // button4.whenPressed(new RunMo());
-      // button5.whenPressed(new RunLarry());
-      // button5.whenPressed(new RunMo());
-      // button6.whenPressed(new MoOff());
-      button7.whenPressed(new LarryOff()); //correct
-      // button9.whenPressed(new LarryOff());
-      button10.whenPressed(new RunConveyor(.8));
-      //button11.whenPressed(new RunConveyor(.8));
-      button12.whenPressed(new RunConveyor(0));
-      button13.whenPressed(new IntakeCargo());
-      button14.whenPressed(new RunIntake(.4));
-      button15.whenPressed(new RunIntake(0));
-      
+      button2.whileHeld(new RunShooter(0.5));
+      button2.whenPressed(new LarryOff());
+
+      button3.whenPressed(new LarryOff());
+      button3.whenPressed(new RunMo());
+
+      button4.whenPressed(new RunLarry());
+      button4.whenPressed(new MoOff());
+
   
       bumperLeft.whenPressed(new RunMo());
       bumperRight.whenPressed(new RunLarry());
       triggerleft.whenPressed(new MoOff());
       triggerRight.whenPressed(new LarryOff());
-      // buttonX.whenPressed(new RunConveyor(.8));
-      buttonY.whenPressed(new RaiseArm());
-      back.whenPressed(new RunIntake(.4));
-      start.whenPressed(new RunIntake(0));
-      buttonA.whenPressed(new LowerArm());
-      buttonB.whenPressed(new RunShooter(0));
+
+      buttonY.whenPressed(new RaiseArmTwo());
+      buttonA.whenPressed(new LowerArmTwo()); 
+
+      //Reverse cargo
+      buttonB.whileHeld(new RunConveyor(-0.8));
+      buttonB.whileHeld(new RunShooter(-0.4));
+      buttonB.whenPressed(new RunLarry());
+      
       
   }
 

@@ -11,8 +11,8 @@ import frc.robot.commands.RunArmWithStick;
 public class Arm extends Subsystem {
 
   //sensors
-  DigitalInput upperHallEffect = new DigitalInput(7);
-  DigitalInput lowerHallEffect = new DigitalInput(8);
+  DigitalInput upperHallEffect = new DigitalInput(8);
+  DigitalInput lowerHallEffect = new DigitalInput(7);
   //motors
   TalonSRX armMotor = new TalonSRX(RobotMap.armMotor);
    

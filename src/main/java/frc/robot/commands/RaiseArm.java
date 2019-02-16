@@ -22,26 +22,39 @@ public class RaiseArm extends Command {
   protected void initialize() {
   }
 
+
+
+  @Override
+  public synchronized void start() {
+    System.out.println("staring raise");
+  }
+
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.m_Arm.setSpeed(.2);
+    // Robot.m_Arm.setSpeed(.2);
+    System.out.println("execute raise");
+
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if (!Robot.m_Arm.getUpperHallEffect()|| Robot.m_oi.getStick().getRawButton(11) ) {
-      return true;
-    }
-    else {
-      return false;
-    }
+    // if (Robot.m_oi.getStick().getRawButton(11) || Robot.m_oi.getLogitech().getRawButton(1) || Robot.m_Arm.getUpperHallEffect()){
+    //   return true;
+    // }else{
+    //   return false;
+    // }
+    System.out.println("is finnished called");
+
+    return false;
   }  
 
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    System.out.println("end called");
+
     Robot.m_Arm.setSpeed(0);
   }
 
@@ -49,5 +62,7 @@ public class RaiseArm extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    System.out.println("interupted");
+
   }
 }

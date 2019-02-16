@@ -110,10 +110,21 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-    //Universal cancle buttons
-    if (m_oi.getLogitech().getRawButton(1) || m_oi.getLogitech().getRawButton(11)){ //this has not been tested
-      Scheduler.getInstance().removeAll();
-    }
+    // //Universal cancle buttons
+    // if (m_oi.getLogitech().getRawButton(1) || m_oi.getStick().getRawButton(11)){ //this has not been tested
+      
+    //   if (m_Arm.getCurrentCommand() != null){
+    //     m_Arm.getCurrentCommand().cancel();;
+    //   }
+    //   if (m_Conveyor.getCurrentCommand() != null){
+    //     m_Conveyor.getCurrentCommand().cancel();
+    //   }
+    //   if (m_Intake.getCurrentCommand() != null){
+    //     m_Intake.getCurrentCommand().cancel();
+    //   }
+    // }
+
+    // SmartDashboard.putBoolean("button 11", m_oi.getStick().getRawButton(11));
   }
 
   /**
