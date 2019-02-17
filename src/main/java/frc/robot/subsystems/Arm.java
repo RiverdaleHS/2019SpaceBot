@@ -15,6 +15,8 @@ public class Arm extends Subsystem {
   DigitalInput lowerHallEffect = new DigitalInput(7);
   //motors
   TalonSRX armMotor = new TalonSRX(RobotMap.armMotor);
+
+  public boolean armIsUp = true;
    
   public void initDefaultCommand() {
     setDefaultCommand(new RunArmWithStick());

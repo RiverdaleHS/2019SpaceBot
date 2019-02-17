@@ -31,7 +31,16 @@ public class RaiseArmTwo extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if (Robot.m_oi.getStick().getRawButton(11) || Robot.m_oi.getLogitech().getRawButton(1) || !Robot.m_Arm.getUpperHallEffect()){
+    if (Robot.m_Arm.armIsUp){
+      return true;
+    }
+
+    if (!Robot.m_Arm.getUpperHallEffect()){
+      Robot.m_Arm.armIsUp = true;
+      return true;
+    }
+
+    if (Robot.m_oi.getStick().getRawButton(11) || Robot.m_oi.getLogitech().getRawButton(1)){
       return true;
     }else{
       return false;

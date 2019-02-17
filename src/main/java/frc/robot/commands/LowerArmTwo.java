@@ -25,17 +25,29 @@ public class LowerArmTwo extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
-    Robot.m_Arm.setSpeed(-0.8);
+    Robot.m_Arm.setSpeed(-0.6);
   }
 
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if (Robot.m_oi.getStick().getRawButton(11) || Robot.m_oi.getLogitech().getRawButton(1) || !Robot.m_Arm.getLowerHallEffect()){
+
+    if (!Robot.m_Arm.armIsUp){
+      return true;
+    }
+
+    if (!Robot.m_Arm.getLowerHallEffect()){
+      Robot.m_Arm.armIsUp = false;
+      return true;
+    }
+
+    if (Robot.m_oi.getStick().getRawButton(11) || Robot.m_oi.getLogitech().getRawButton(1)){
       return true;
     }else{
       return false;
-    }  }
+    }
+
+  }
 
   // Called once after isFinished returns true
   @Override

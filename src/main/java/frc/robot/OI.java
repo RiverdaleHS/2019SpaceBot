@@ -81,6 +81,8 @@ public class OI {
       button4.whenPressed(new RunLarry());
       button4.whenPressed(new MoOff());
 
+      button13.whenPressed(new IntakeCargo());
+
   
       bumperLeft.whenPressed(new RunMo());
       bumperRight.whenPressed(new RunLarry());

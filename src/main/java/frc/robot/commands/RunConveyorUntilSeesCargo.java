@@ -31,7 +31,7 @@ public class RunConveyorUntilSeesCargo extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if (Robot.m_oi.getStick().getRawButton(11) || Robot.m_Conveyor.getColorSensor()){
+    if (Robot.m_oi.getStick().getRawButton(11) || Robot.m_oi.getLogitech().getRawButton(1)|| Robot.m_Conveyor.getColorSensor()){
       return true;
     }else{
       return false;
