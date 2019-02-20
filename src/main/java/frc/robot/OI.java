@@ -70,7 +70,7 @@ public class OI {
       button1.whenPressed(new LarryOff());
       //shoot low
       button2.whileHeld(new RunConveyor(0.8));
-      button2.whileHeld(new RunShooter(0.5));
+      button2.whileHeld(new RunShooter(0.3));
       button2.whenPressed(new LarryOff());
 
       button3.whenPressed(new LarryOff());
