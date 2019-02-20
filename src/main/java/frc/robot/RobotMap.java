@@ -32,6 +32,8 @@ public class RobotMap {
   public static int conveyorMotor = 21;
   public static int intakeMotor = 31;
   public static int armMotor = 32;
+
+  public static int talonTimeoutMS = 10;
   // If you are using multiple modules, make sure to define both the port
   // number and the module. For example you with a rangefinder:
   // public static int rangefinderPort = 1;
