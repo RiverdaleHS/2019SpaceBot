@@ -33,8 +33,11 @@ public class RobotMap {
   public static int intakeMotor = 31;
   public static int armMotor = 32;
 
-  public static int talonTimeoutMS = 10;
-  // If you are using multiple modules, make sure to define both the port
+  public static int talonTimeoutMS = 30;
+  public static double talon_kF = 0.3817164179;//1023/2680; THIS IS WIERDLY PICKY
+  public static double talon_kP = 0.25;
+  public static double talon_kI = 0;
+  public static double talon_kD = 0;  // If you are using multiple modules, make sure to define both the port
   // number and the module. For example you with a rangefinder:
   // public static int rangefinderPort = 1;
   // public static int rangefinderModule = 1;
