@@ -11,6 +11,10 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class LowerArmTwo extends Command {
+
+  long startTime = 0;
+
+
   public LowerArmTwo() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -20,6 +24,11 @@ public class LowerArmTwo extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+  }
+
+  @Override
+  public synchronized void start() {
+    startTime = System.currentTimeMillis();
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -32,12 +41,10 @@ public class LowerArmTwo extends Command {
   @Override
   protected boolean isFinished() {
 
-    if (!Robot.m_Arm.armIsUp){
+    if (System.currentTimeMillis() > startTime  + 3500){
       return true;
     }
-
     if (!Robot.m_Arm.getLowerHallEffect()){
-      Robot.m_Arm.armIsUp = false;
       return true;
     }
 

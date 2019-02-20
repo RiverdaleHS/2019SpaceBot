@@ -11,6 +11,10 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc.robot.Robot;
 
 public class RaiseArmTwo extends Command {
+
+
+  long startTime = 0;
+
   public RaiseArmTwo() {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
@@ -22,6 +26,11 @@ public class RaiseArmTwo extends Command {
   protected void initialize() {
   }
 
+  @Override
+  public synchronized void start() {
+    startTime = System.currentTimeMillis();
+  }
+
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
@@ -31,12 +40,13 @@ public class RaiseArmTwo extends Command {
   // Make this return true when this Command no longer needs to run execute()
   @Override
   protected boolean isFinished() {
-    if (Robot.m_Arm.armIsUp){
+
+
+    if (System.currentTimeMillis() > startTime  + 3500){
       return true;
     }
 
     if (!Robot.m_Arm.getUpperHallEffect()){
-      Robot.m_Arm.armIsUp = true;
       return true;
     }
 
