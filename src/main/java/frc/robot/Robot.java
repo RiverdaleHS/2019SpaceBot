@@ -27,14 +27,16 @@ import frc.robot.subsystems.Intake;
  * project.
  */
 public class Robot extends TimedRobot {
-  public static Mo m_Mo = new Mo();
-  public static Larry m_Larry = new Larry();
-  public static Chassis m_Chassis = new Chassis();
-  public static Shooter m_Shooter = new Shooter();
-  public static Conveyor m_Conveyor = new Conveyor();
-  public static Intake m_Intake = new Intake();
-  public static Arm m_Arm = new Arm();
-  public static OI m_oi = new OI();
+
+  public static Mo m_Mo;
+  public static Larry m_Larry;
+  public static Chassis m_Chassis;
+  public static Shooter m_Shooter;
+  public static Conveyor m_Conveyor;
+  public static Intake m_Intake;
+  public static Arm m_Arm;
+
+  public static OI m_oi;
   
   /**
    * This function is run when the robot is first started up and should be
@@ -42,22 +44,19 @@ public class Robot extends TimedRobot {
    */
   @Override
   public void robotInit() {
-   CameraServer.getInstance().startAutomaticCapture();
-   SmartDashboard.putData(m_Intake);
-   SmartDashboard.putData(m_Conveyor);
+    m_Mo = new Mo();
+    m_Larry = new Larry();
+    m_Chassis = new Chassis();
+    m_Shooter = new Shooter();
+    m_Conveyor = new Conveyor();
+    m_Intake = new Intake();
+    m_Arm = new Arm();
+    m_oi = new OI();
+    CameraServer.getInstance().startAutomaticCapture();
+    SmartDashboard.putData(m_Intake);
+    SmartDashboard.putData(m_Conveyor);
   }
 
-  /**
-   * This function is called every robot packet, no matter the mode. Use
-   * this for items like diagnostics that you want ran during disabled,
-   * autonomous, teleoperated and test.
-   *
-   * <p>This runs after the mode specific periodic functions, but before
-   * LiveWindow and SmartDashboard integrated updating.
-   */
-  @Override
-  public void robotPeriodic() {
-  }
 
   /**
    * This function is called once each time the robot enters Disabled mode.
@@ -108,21 +107,6 @@ public class Robot extends TimedRobot {
   @Override
   public void teleopPeriodic() {
     Scheduler.getInstance().run();
-    // //Universal cancle buttons
-    // if (m_oi.getLogitech().getRawButton(1) || m_oi.getStick().getRawButton(11)){ //this has not been tested
-      
-    //   if (m_Arm.getCurrentCommand() != null){
-    //     m_Arm.getCurrentCommand().cancel();;
-    //   }
-    //   if (m_Conveyor.getCurrentCommand() != null){
-    //     m_Conveyor.getCurrentCommand().cancel();
-    //   }
-    //   if (m_Intake.getCurrentCommand() != null){
-    //     m_Intake.getCurrentCommand().cancel();
-    //   }
-    // }
-
-    // SmartDashboard.putBoolean("button 11", m_oi.getStick().getRawButton(11));
   }
 
   /**

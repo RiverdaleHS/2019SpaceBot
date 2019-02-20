@@ -23,11 +23,14 @@ public class JoystickDrive extends Command {
     //Use requires() here to declare subsystem dependencies
     //eg. requires(chassis);
     requires(Robot.m_Chassis);
+    setInterruptible(true);
+
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    setInterruptible(true);
   }
 
   // Called repeatedly when this Command is scheduled to run
@@ -37,7 +40,7 @@ public class JoystickDrive extends Command {
     double horizontal = -stick.getX();
     double twist = -stick.getTwist();
     //if this works the first time lol
-    Robot.m_Chassis.setSpeed(virtical - twist - horizontal, virtical - twist + horizontal, -virtical + -twist - horizontal, -virtical + -twist + horizontal);
+    Robot.m_Chassis.setMotorsPercentOutput(virtical - twist - horizontal, virtical - twist + horizontal, -virtical + -twist - horizontal, -virtical + -twist + horizontal);
   }
 
   // Make this return true when this Command no longer needs to run execute()
@@ -49,11 +52,15 @@ public class JoystickDrive extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    Robot.m_Chassis.setMotorsPercentOutput(0, 0, 0, 0);
   }
 
   // Called when another command which requires one or more of the same
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    System.out.println("joystick drive is interupted");
+    super.interrupted();
+    // end();
   }
 }

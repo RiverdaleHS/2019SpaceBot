@@ -25,6 +25,7 @@ import frc.robot.commands.RunLarry;
 import frc.robot.commands.RunMo;
 import frc.robot.commands.RunShooter;
 import frc.robot.commands.TestArmCommand;
+import frc.robot.commands.auto.TurnToAnglePID;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -78,6 +79,8 @@ public class OI {
 
       button4.whenPressed(new RunLarry());
       button4.whenPressed(new MoOff());
+      
+      button5.whenPressed(new TurnToAnglePID());
 
       button13.whenPressed(new IntakeCargo());
 

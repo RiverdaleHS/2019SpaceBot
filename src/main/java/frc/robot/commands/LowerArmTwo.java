@@ -24,16 +24,19 @@ public class LowerArmTwo extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    super.initialize();
   }
 
   @Override
   public synchronized void start() {
+    super.start();
     startTime = System.currentTimeMillis();
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    super.execute();
     Robot.m_Arm.setSpeed(-0.6);
   }
 
@@ -59,6 +62,7 @@ public class LowerArmTwo extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    super.end();
     Robot.m_Arm.setSpeed(0);
   }
 
@@ -66,5 +70,6 @@ public class LowerArmTwo extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    super.interrupted();
   }
 }
