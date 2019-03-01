@@ -19,17 +19,17 @@ public class RaiseArmTwo extends Command {
     // Use requires() here to declare subsystem dependencies
     // eg. requires(chassis);
     requires(Robot.m_Arm);
-    setInterruptible(true);
-
   }
 
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    super.initialize();
   }
 
   @Override
   public synchronized void start() {
+    super.start();
     System.out.println("RaiseArmTwo start");
 
     startTime = System.currentTimeMillis();
@@ -38,6 +38,7 @@ public class RaiseArmTwo extends Command {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    super.execute();
     System.out.println("RaiseArmTwo execute");
 
     Robot.m_Arm.setSpeed(0.8);
@@ -67,6 +68,7 @@ public class RaiseArmTwo extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    super.end();
     System.out.println("RaiseArmTwo end");
 
     Robot.m_Arm.setSpeed(0);
@@ -76,6 +78,7 @@ public class RaiseArmTwo extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    super.interrupted();
     System.out.println("RaiseArmTwo interupted");
   }
 }

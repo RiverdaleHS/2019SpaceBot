@@ -41,11 +41,13 @@ public class TurnToAnglePID extends Command implements PIDOutput {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    super.initialize();
     System.out.println("turn to angle is initalize");
   }
 
   @Override
   public synchronized void start() {
+    super.start();
     System.out.println("turn to angle is start");
 
     turnController.enable();
@@ -55,6 +57,7 @@ public class TurnToAnglePID extends Command implements PIDOutput {
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    super.execute();
     System.out.println("turn to angle is execute");
 
     Robot.m_Chassis.setMotorsPercentOutput(turnControllerOutput, turnControllerOutput, turnControllerOutput, turnControllerOutput);
@@ -76,11 +79,13 @@ public class TurnToAnglePID extends Command implements PIDOutput {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    super.end();
     turnController.disable();
   }
 
   @Override
   public synchronized void cancel() {
+    super.cancel();
     turnController.disable();
   }
 
@@ -88,6 +93,7 @@ public class TurnToAnglePID extends Command implements PIDOutput {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    super.interrupted();
   }
 
   @Override

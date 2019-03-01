@@ -15,9 +15,6 @@ import frc.robot.OI;
 
 
 public class JoystickDrive extends Command {
-
-  public static OI m_oi = new OI();
-  Joystick stick = m_oi.getStick();
   
   public JoystickDrive() {
     //Use requires() here to declare subsystem dependencies
@@ -30,12 +27,15 @@ public class JoystickDrive extends Command {
   // Called just before this Command runs the first time
   @Override
   protected void initialize() {
+    super.initialize();
     setInterruptible(true);
   }
 
   // Called repeatedly when this Command is scheduled to run
   @Override
   protected void execute() {
+    super.execute();
+    Joystick stick = Robot.m_oi.getStick();
     double virtical = -stick.getY();
     double horizontal = -stick.getX();
     double twist = -stick.getTwist();
@@ -52,6 +52,7 @@ public class JoystickDrive extends Command {
   // Called once after isFinished returns true
   @Override
   protected void end() {
+    super.end();
     Robot.m_Chassis.setMotorsPercentOutput(0, 0, 0, 0);
   }
 
@@ -59,6 +60,7 @@ public class JoystickDrive extends Command {
   // subsystems is scheduled to run
   @Override
   protected void interrupted() {
+    super.interrupted();
     System.out.println("joystick drive is interupted");
     super.interrupted();
     // end();
